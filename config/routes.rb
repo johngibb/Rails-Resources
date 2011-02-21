@@ -1,4 +1,10 @@
 RailsResources::Application.routes.draw do
+  resources :snippets
+
+  resources :links
+
+  resources :stack_overflow_searches
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

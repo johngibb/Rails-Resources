@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @stack_overflow_search.title %>
+</p>
+
+<p>
+  <b>Prefix:</b>
+  <%= @stack_overflow_search.prefix %>
+</p>
+
+
+<%= link_to 'Edit', edit_stack_overflow_search_path(@stack_overflow_search) %> |
+<%= link_to 'Back', stack_overflow_searches_path %>

@@ -1,0 +1,25 @@
+<h1>Listing stack_overflow_searches</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Prefix</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stack_overflow_searches.each do |stack_overflow_search| %>
+  <tr>
+    <td><%= stack_overflow_search.title %></td>
+    <td><%= stack_overflow_search.prefix %></td>
+    <td><%= link_to 'Show', stack_overflow_search %></td>
+    <td><%= link_to 'Edit', edit_stack_overflow_search_path(stack_overflow_search) %></td>
+    <td><%= link_to 'Destroy', stack_overflow_search, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stack overflow search', new_stack_overflow_search_path %>

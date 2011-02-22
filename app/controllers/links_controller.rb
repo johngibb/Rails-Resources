@@ -30,7 +30,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
 
     if @link.update_attributes(params[:link])
-      redirect_to(@link, :notice => 'Link was successfully updated.')
+      redirect_to("/", :notice => 'Link was successfully updated.')
     else
       render :action => "edit"
     end

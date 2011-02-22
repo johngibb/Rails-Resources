@@ -28,7 +28,7 @@ class SnippetsController < ApplicationController
   def update
     @snippet = Snippet.find(params[:id])
     if @snippet.update_attributes(params[:snippet])
-      redirect_to(@snippet, :notice => 'Snippet was successfully updated.')
+      redirect_to("/", :notice => 'Snippet was successfully updated.')
     else
       render :action => "edit"
     end

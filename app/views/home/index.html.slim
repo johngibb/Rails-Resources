@@ -1,0 +1,8 @@
+= section "StackOverflow", "/stack_overflow_searches" do
+   = render_collection @searches, :as => :searches
+   
+= section "Links", "/links" do
+   = render @links
+
+= section "Snippets", "/snippets" do
+   = render_collection @snippets

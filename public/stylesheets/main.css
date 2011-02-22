@@ -47,3 +47,9 @@ dl.snippets dd {
 	font-style: italic;
 	color: #999;
 }
+
+.header-small-link {
+	font-size: .7em;
+	font-weight: normal;
+	margin-left: .5em;
+}

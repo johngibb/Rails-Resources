@@ -27,3 +27,12 @@ dl.snippets dt:after {
 dl.snippets dd {
    margin-left: 20px;
 }
+
+#title {
+	margin-bottom: 30px;
+}
+
+#title a {
+	text-decoration: none;
+	color: #000;
+}

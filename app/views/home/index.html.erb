@@ -12,9 +12,7 @@
 <% end %>
 
 <% section "Links", "/links" do %>
-   <% @links.each do |link| %>
-      <%= link_to link.title, link.url %><br />
-   <% end %>
+   <%= render :partial => @links %>
 <% end %>
 
 <% section "Snippets", "/snippets" do %>

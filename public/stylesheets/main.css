@@ -42,3 +42,8 @@ dl.snippets dd {
 .bare:hover {
 	text-decoration: underline;
 }
+
+.domain {
+	font-style: italic;
+	color: #999;
+}

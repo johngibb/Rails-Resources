@@ -1,0 +1,10 @@
+<dl class="form">
+   <% searches.each do |search| %>
+	   <dt><%= search.title %></dt>
+		<dd>
+		  	<form action="http://stackoverflow.com/search" method="get">
+				<input name="q" type="text" value="<%= search.prefix %> " />
+			</form>
+		</dd>
+	<% end %>
+</dl>

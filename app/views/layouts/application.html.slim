@@ -1,0 +1,12 @@
+!doctype html
+html
+   head
+      title Rails Resources
+      = stylesheet_link_tag :all
+      = javascript_include_tag :defaults
+      = csrf_meta_tag
+   body
+      h1#title
+         = header_link_to "Rails Resources", "/"
+      
+      = yield

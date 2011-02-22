@@ -53,3 +53,17 @@ dl.snippets dd {
 	font-weight: normal;
 	margin-left: .5em;
 }
+
+body {
+	background-color: #ccc;
+}
+
+#container {
+	width: 900px;
+	margin: auto;
+}
+
+#content {
+	background-color: #fff;
+	padding: 10px;
+}

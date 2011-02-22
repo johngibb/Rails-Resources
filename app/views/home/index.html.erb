@@ -1,0 +1,32 @@
+<div>
+   <h2>StackOverflow</h2>
+	<dl class="form">
+	   <% @searches.each do |search| %>
+		   <dt><%= search.title %></dt>
+   		<dd>
+   		  	<form action="http://stackoverflow.com/search" method="get">
+   				<input name="q" type="text" value="<%= search.prefix %> " />
+   			</form>
+   		</dd>
+		<% end %>
+	</dl>
+</div>
+
+<div>
+   <h2>Links</h2>
+   <% @links.each do |link| %>
+      <%= link_to link.title, link.url %><br />
+   <% end %>
+</div>
+
+<div>
+   <h2>Snippets</h2>
+   <dl class="snippets">
+      <% @snippets.each do |snippet| %>
+         <dt><%= snippet.title %></dt>
+         <dd>
+            <pre><%= snippet.content %></pre>
+         </dd>
+      <% end %>
+   </dl>
+</div>

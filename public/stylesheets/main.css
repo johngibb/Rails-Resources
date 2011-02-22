@@ -1,0 +1,29 @@
+input[type=text] {
+	width: 200px;
+}
+form {
+	display: inline;
+}
+
+dl.form dt:after { 
+	content: ":" 
+}
+
+dl.form dt {
+	min-height: 1em; /* to make sure it stays aligned if it's empty */
+	float: left;
+	clear: left;
+}
+
+dl.form dd {
+	min-height: 1em;
+	margin-left: 80px;
+	padding-left: 10px;
+}
+
+dl.snippets dt:after { 
+	content: ":" 
+}
+dl.snippets dd {
+   margin-left: 20px;
+}

@@ -1,4 +1,9 @@
+
 module ApplicationHelper
+  
+  def header_link_to(title, url)
+    link_to title, url, :class => 'bare'
+  end
   
   def render(*args)
     options = args.first

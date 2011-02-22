@@ -1,3 +1,5 @@
+a { color: #000; }
+
 input[type=text] {
 	width: 200px;
 }
@@ -32,7 +34,11 @@ dl.snippets dd {
 	margin-bottom: 30px;
 }
 
-#title a {
+.bare {
 	text-decoration: none;
 	color: #000;
+}
+
+.bare:hover {
+	text-decoration: underline;
 }

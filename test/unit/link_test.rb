@@ -10,4 +10,9 @@ class LinkTest < ActiveSupport::TestCase
     l = links :devise
     assert_equal "github.com", l.domain
   end
+  
+  test "works with no trailing slash" do
+    l = links :notrailingslash
+    assert_equal "something.com", l.domain
+  end
 end

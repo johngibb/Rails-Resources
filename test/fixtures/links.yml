@@ -7,3 +7,7 @@ rails:
 devise:
   title: Test Devise
   url: https://github.com/plataformatec/devise
+
+notrailingslash:
+  title: Something
+  url: http://something.com

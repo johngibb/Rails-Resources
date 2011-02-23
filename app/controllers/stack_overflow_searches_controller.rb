@@ -20,7 +20,7 @@ class StackOverflowSearchesController < ApplicationController
     @stack_overflow_search = StackOverflowSearch.new(params[:stack_overflow_search])
 
     if @stack_overflow_search.save
-      redirect_to('/', :notice => 'Stack overflow search was successfully created.')
+      redirect_to(:root, :notice => 'Stack overflow search was successfully created.')
     else
       render :action => "new"
     end
@@ -30,7 +30,7 @@ class StackOverflowSearchesController < ApplicationController
     @stack_overflow_search = StackOverflowSearch.find(params[:id])
 
     if @stack_overflow_search.update_attributes(params[:stack_overflow_search])
-      redirect_to(@stack_overflow_search, :notice => 'Stack overflow search was successfully updated.')
+      redirect_to(:root, :notice => 'Stack overflow search was successfully updated.')
     else
       render :action => "edit"
     end

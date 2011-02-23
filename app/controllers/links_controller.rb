@@ -20,7 +20,7 @@ class LinksController < ApplicationController
     @link = Link.new(params[:link])
 
     if @link.save
-      redirect_to(@link, :notice => 'Link was successfully created.')
+      redirect_to(:root, :notice => 'Link was successfully created.')
     else
       render :action => "new"
     end
@@ -30,7 +30,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
 
     if @link.update_attributes(params[:link])
-      redirect_to("/", :notice => 'Link was successfully updated.')
+      redirect_to(:root, :notice => 'Link was successfully updated.')
     else
       render :action => "edit"
     end

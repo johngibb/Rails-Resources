@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
-  url: MyString
+rails:
+  title: Rails API
+  url: http://api.rubyonrails.org/
 
-two:
-  title: MyString
-  url: MyString
+devise:
+  title: Test Devise
+  url: https://github.com/plataformatec/devise

@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
   
   def domain
     domain = url.clone
-    domain.gsub! %r'^http://', ''
+    domain.gsub! %r'^https?://', ''
     domain.gsub! %r'/.*$', ''
   end
 end

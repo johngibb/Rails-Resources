@@ -67,3 +67,7 @@ body {
 	background-color: #fff;
 	padding: 10px;
 }
+
+.link {
+	line-height: 1.6em;
+}

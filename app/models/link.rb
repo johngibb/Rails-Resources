@@ -5,6 +5,7 @@ class Link < ActiveRecord::Base
     domain = url.clone
     domain.gsub! %r'^https?://', ''
     domain.gsub! %r'/.*$', ''
+    domain.gsub! /^www\./, ''
     domain
   end
 end

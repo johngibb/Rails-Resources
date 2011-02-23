@@ -15,4 +15,9 @@ class LinkTest < ActiveSupport::TestCase
     l = links :notrailingslash
     assert_equal "something.com", l.domain
   end
+  
+  test "removes www" do
+    l = links :leadingwww
+    assert_equal "something.com", l.domain
+  end
 end

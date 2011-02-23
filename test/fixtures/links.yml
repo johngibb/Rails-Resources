@@ -11,3 +11,7 @@ devise:
 notrailingslash:
   title: Something
   url: http://something.com
+
+leadingwww:
+  title: Something Else
+  url: http://www.something.com

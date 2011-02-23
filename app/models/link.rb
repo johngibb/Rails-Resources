@@ -1,8 +1,9 @@
 class Link < ActiveRecord::Base
   validates_presence_of :title, :url
   
-  def domain(url)
-    url = url.gsub %r'^http://', ''
-    url = url.gsub %r'/.*$', ''
+  def domain
+    domain = url.clone
+    domain.gsub! %r'^http://', ''
+    domain.gsub! %r'/.*$', ''
   end
 end

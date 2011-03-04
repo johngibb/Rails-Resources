@@ -11,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+<%= link_to 'Edit', edit_snippet_path(@snippet) if @is_admin %> |
 <%= link_to 'Back', snippets_path %>

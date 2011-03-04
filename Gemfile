@@ -32,3 +32,5 @@ gem 'sqlite3'
 
 gem 'slim', :require => 'slim/rails'
 gem 'rdiscount'
+
+gem 'bcrypt-ruby'

@@ -1,4 +1,4 @@
 h2 
    = link_to title, link, :class => 'bare'
-   = link_to "new", new_link, :class => 'header-small-link'
+   = link_to "new", new_link, :class => 'header-small-link' if @is_admin
 = body

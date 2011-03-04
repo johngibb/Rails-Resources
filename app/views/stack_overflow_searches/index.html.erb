@@ -14,12 +14,12 @@
     <td><%= stack_overflow_search.title %></td>
     <td><%= stack_overflow_search.prefix %></td>
     <td><%= link_to 'Show', stack_overflow_search %></td>
-    <td><%= link_to 'Edit', edit_stack_overflow_search_path(stack_overflow_search) %></td>
-    <td><%= link_to 'Destroy', stack_overflow_search, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_stack_overflow_search_path(stack_overflow_search) if @is_admin %></td>
+    <td><%= link_to 'Destroy', stack_overflow_search, :confirm => 'Are you sure?', :method => :delete if @is_admin %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Stack overflow search', new_stack_overflow_search_path %>
+<%= link_to 'New Stack overflow search', new_stack_overflow_search_path if @is_admin %>

@@ -11,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Edit', edit_link_path(@link) if @is_admin %> |
 <%= link_to 'Back', links_path %>

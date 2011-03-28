@@ -51,6 +51,9 @@ namespace :deploy do
       puts 'Check out master'
       puts `git checkout master`
       
+      puts 'Removing deploy branch'
+      puts `git branch -d #{branch}`
+      
       puts 'Deleting previous file'
       File.delete(PREVIOUS)
 

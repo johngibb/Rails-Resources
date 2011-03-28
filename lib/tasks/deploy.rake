@@ -39,23 +39,9 @@ namespace :deploy do
 
   task :push_previous do
     previous_release = File.read(PREVIOUS).chomp
-    current_branch = `git branch 2> /dev/null | sed -n 's/^\\* \\(.*\\)$/\\1/p'`.chomp
-    
     if previous_release
-      branch = "deploy-#{previous_release}"
-      puts "Rolling back to '#{previous_release}' ..."
-      
-      puts "Checking out '#{previous_release}' in a new branch on local git repo ..."
-      puts `git checkout -b #{branch} #{previous_release}`
-      
       puts "Pushing '#{previous_release}' to Heroku master ..."
-      puts `git push heroku +#{branch}:master --force`
-      
-      puts 'Check out master'
-      puts `git checkout #{current_branch}`
-      
-      puts 'Removing deploy branch'
-      puts `git branch -d #{branch}`
+      puts `git push heroku +#{previous_release}:master -f`
 
       puts 'All done!'
     else

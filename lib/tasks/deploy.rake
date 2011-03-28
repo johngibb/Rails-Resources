@@ -7,8 +7,9 @@ namespace :deploy do
   task :rollback => [:off, :push_previous, :restart, :on]
 
   task :push do
+    current_branch = `git branch 2> /dev/null | sed -n 's/^\* \(.*\)$/(\1)/p'`.chomp
     puts 'Deploying site to Heroku ...'
-    puts `git push heroku`
+    puts `git push heroku #{current_branch}:master -f`
   end
   
   task :restart do
@@ -38,6 +39,8 @@ namespace :deploy do
 
   task :push_previous do
     previous_release = File.read(PREVIOUS)
+    current_branch = `git branch 2> /dev/null | sed -n 's/^\* \(.*\)$/(\1)/p'`.chomp
+    
     if previous_release
       branch = "deploy-#{previous_release}"
       puts "Rolling back to '#{previous_release}' ..."
@@ -49,7 +52,7 @@ namespace :deploy do
       puts `git push heroku +#{branch}:master --force`
       
       puts 'Check out master'
-      puts `git checkout master`
+      puts `git checkout #{current_branch}`
       
       puts 'Removing deploy branch'
       puts `git branch -d #{branch}`

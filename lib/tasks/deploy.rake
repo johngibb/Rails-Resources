@@ -1,7 +1,9 @@
-task :deploy => ['deploy:push', 'deploy:restart', 'deploy:tag']
+PREVIOUS = ".previous-deploy"
+
+task :deploy => ['deploy:record', 'deploy:push', 'deploy:restart']
 
 namespace :deploy do
-  task :migrations => [:push, :off, :migrate, :restart, :on, :tag]
+  task :migrations => [:push, :off, :migrate, :restart, :on, :record]
   task :rollback => [:off, :push_previous, :restart, :on]
 
   task :push do
@@ -14,11 +16,9 @@ namespace :deploy do
     puts `heroku restart`
   end
   
-  task :tag do
-    release_name = "release-#{Time.now.utc.strftime("%Y%m%d%H%M%S")}"
-    puts "Tagging release as '#{release_name}'"
-    puts `git tag -a #{release_name} -m 'Tagged release'`
-    puts `git push --tags heroku`
+  task :record do
+    current_release = `git log remotes/heroku/master --oneline | head -n 1 | cut -d ' ' -f 1`.chomp
+    File.open(PREVIOUS, "w") { |f| f.puts current_release }
   end
   
   task :migrate do
@@ -37,37 +37,23 @@ namespace :deploy do
   end
 
   task :push_previous do
-    releases = `git tag`.split("\n").select { |t| t[0..7] == 'release-' }.sort
-    current_release = releases.last
-    previous_release = releases[-2] if releases.length >= 2
+    previous_release = File.read(PREVIOUS)
     if previous_release
+      branch = "deploy-#{previous_release}"
       puts "Rolling back to '#{previous_release}' ..."
       
       puts "Checking out '#{previous_release}' in a new branch on local git repo ..."
-      puts `git checkout #{previous_release}`
-      puts `git checkout -b #{previous_release}`
-      
-      puts "Removing tagged version '#{previous_release}' (now transformed in branch) ..."
-      puts `git tag -d #{previous_release}`
-      puts `git push heroku :refs/tags/#{previous_release}`
+      puts `git checkout -b #{branch} #{previous_release}`
       
       puts "Pushing '#{previous_release}' to Heroku master ..."
-      puts `git push heroku +#{previous_release}:master --force`
+      puts `git push heroku +#{branch}:master --force`
       
-      puts "Deleting rollbacked release '#{current_release}' ..."
-      puts `git tag -d #{current_release}`
-      puts `git push heroku :refs/tags/#{current_release}`
-      
-      puts "Retagging release '#{previous_release}' in case to repeat this process (other rollbacks)..."
-      puts `git tag -a #{previous_release} -m 'Tagged release'`
-      puts `git push --tags heroku`
-      
-      puts "Turning local repo checked out on master ..."
+      puts 'Check out master'
       puts `git checkout master`
+
       puts 'All done!'
     else
       puts "No release tags found - can't roll back!"
-      puts releases
     end
   end
 end

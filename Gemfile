@@ -34,3 +34,5 @@ gem 'slim', :require => 'slim/rails'
 gem 'rdiscount'
 
 gem 'bcrypt-ruby'
+
+gem 'heroku'

@@ -31,9 +31,18 @@ GEM
     arel (2.0.8)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    configuration (1.2.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    heroku (1.18.2)
+      json (~> 1.5.1)
+      launchy (~> 0.3.2)
+      rest-client (< 1.7.0, >= 1.4.0)
     i18n (0.5.0)
+    json (1.5.1)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -61,6 +70,8 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdiscount (1.6.8)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
     slim (0.9.0)
       temple (~> 0.1.7)
       tilt (~> 1.2)
@@ -77,6 +88,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
+  heroku
   rails (= 3.0.4)
   rdiscount
   slim

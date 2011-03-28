@@ -18,7 +18,12 @@ namespace :deploy do
     puts `heroku restart`
   end
   
-  task :record do
+  task :fetch do
+    puts 'Fetching from heroku'
+    puts `git fetch heroku`
+  end
+  
+  task :record => :fetch do
     current_release = `git log remotes/heroku/master --oneline | head -n 1 | cut -d ' ' -f 1`.chomp
     File.open(PREVIOUS_FILE, "w") { |f| f.puts current_release }
   end

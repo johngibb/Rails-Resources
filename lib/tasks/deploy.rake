@@ -50,6 +50,9 @@ namespace :deploy do
       
       puts 'Check out master'
       puts `git checkout master`
+      
+      puts 'Deleting previous file'
+      File.delete(PREVIOUS)
 
       puts 'All done!'
     else

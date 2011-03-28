@@ -8,7 +8,7 @@ namespace :deploy do
   task :migrations => [:push, :off, :migrate, :restart, :on, :record]
   task :rollback => [:off, :push_previous, :restart, :on]
 
-  task :push do
+  task :push => :check_migrations do
     puts 'Deploying site to Heroku ...'
     puts `git push heroku #{BRANCH}:master -f`
   end
@@ -31,6 +31,16 @@ namespace :deploy do
   task :migrate do
     puts 'Running database migrations ...'
     puts `heroku rake db:migrate`
+  end
+  
+  task :check_migrations do
+    local_version = `rails runner 'puts ActiveRecord::Migrator.current_version'`.chomp
+    remote_version = `heroku console ActiveRecord::Migrator.current_version`.chomp
+    if remote_version >= local_version
+      puts 'Migrations up to date.'
+    else
+      raise "Please run migrations before deploying"
+    end
   end
   
   task :off do

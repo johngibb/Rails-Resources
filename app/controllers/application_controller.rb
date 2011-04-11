@@ -11,11 +11,9 @@ class ApplicationController < ActionController::Base
   
   def set_is_admin
     
-    # Consider the visitor an admin if the request comes from one of the author's two ip addresses
-    # Note: I'm only encryption here so I don't have to check in my ip address. I'm not sure why. ;)
+    # Consider the visitor an admin if the request comes from the author's ip address
     
-    @is_admin = true if Password.new("$2a$10$DyppL0e6Gr2GLk9whAkjSexRiNsULTEfr2SixCyPz9yy94cWRMw0y") == request.remote_ip
-    @is_admin = true if Password.new("$2a$10$cBUOPXSPlwH2av1N6vgEm.6DQShzskQGm1QjSPhzNar4vvHIhTyo.") == request.remote_ip
+    @is_admin = true if "24.130.120.37" == request.remote_ip
     # @is_admin = false
   end
   

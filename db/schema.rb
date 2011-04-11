@@ -10,27 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221235824) do
+ActiveRecord::Schema.define(:version => 20110411092459) do
 
   create_table "links", :force => true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "title"
+    t.string    "url"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "snippets", :force => true do |t|
     t.string   "title"
-    t.string   "content"
+    t.string   "content",    :limit => 5000
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "stack_overflow_searches", :force => true do |t|
-    t.string   "title"
-    t.string   "prefix"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "title"
+    t.string    "prefix"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
 end

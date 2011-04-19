@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   end
   
   def myip
-    render :text => request.env["REMOTE_ADDR"]
+    render :text => request.remote_ip
   end
 end
